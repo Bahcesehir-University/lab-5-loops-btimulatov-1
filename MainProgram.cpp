@@ -39,7 +39,10 @@ int main() {
     // TODO: Declare a string variable for the name
     // TODO: Prompt the user and read the name with cin
     // TODO: Print the greeting
-
+    string name;
+    cout << "enter name" << endl;
+    cin >> name;
+    cout << "Hello " << name;
     cout << endl;
 
     // Exercise 1.2
@@ -51,7 +54,10 @@ int main() {
     // TODO: Declare two int variables
     // TODO: Prompt and read both integers
     // TODO: Print the sum and product
-
+    int x, y;
+    cout << "Enter 2 integers" << endl;
+    cin >> x >> y;
+    cout << x + y;
     cout << endl;
 
     // ========================================================================
@@ -80,7 +86,11 @@ int main() {
 
     cout << "Even numbers (while): ";
     // TODO: Write a while loop that prints even numbers from 2 to 20
-
+    int i = 2;
+    while(i < 21){
+        cout << i++ << " ";
+        i++;
+    }
     cout << endl;
 
     // --- 2B: The FOR loop ---
@@ -100,7 +110,10 @@ int main() {
 
     cout << "Odd numbers (for): ";
     // TODO: Write a for loop that prints odd numbers from 1 to 15
-
+    for(i = 1; i < 16; i++){
+        cout << i++ << " ";
+    }
+    cout << endl;
     cout << endl;
 
     // --- 2C: The DO-WHILE loop ---
@@ -126,7 +139,11 @@ int main() {
     // TODO: Declare an int variable
     // TODO: Write a do-while loop that validates input (1-10)
     // TODO: Print the valid number
-
+    do {
+        cout << "Enter number between 1-10" << endl;
+        cin >> i;
+        cout << "You entered: " << i << endl;
+    } while (i < 1 || i > 10);
     cout << endl;
 
     // ========================================================================
@@ -146,7 +163,12 @@ int main() {
     // TODO: Ask user for a starting number
     // TODO: Use a loop to count down to 1, printing each number followed by "... "
     // TODO: After the loop, print "Liftoff!"
-
+    cout << "Enter start number" << endl;
+    cin >> x;
+    for(i = x; i > 0; i--){
+        cout << i << "... ";
+    }
+    cout << "Liftoff!";
     cout << endl;
 
     // Exercise 3.2 — Sum Calculator
@@ -163,7 +185,16 @@ int main() {
     // TODO: Ask how many numbers
     // TODO: Use a for loop to read each number and accumulate the sum
     // TODO: Print the total sum
-
+    int coutn, num, sum;
+    cout << "How many numbers?" << endl;
+    cin >> coutn;
+    sum = 0;
+    for(i = 1; i <= coutn; i++){
+        cout << "Enter number " << i << ":" << endl;
+        cin >> num;
+        sum = sum + num;
+    }
+    cout << "Total sum: " << sum;
     cout << endl;
 
     // Exercise 3.3 — Multiplication Table
@@ -179,7 +210,12 @@ int main() {
     // TODO: Ask for N
     // TODO: Use a for loop from 1 to 10
     // TODO: Print each line: N x i = N*i
-
+    int N;
+    cout << "Enter N:" << endl;
+    cin >> N;
+    for(i = 1; i < 11; i++){
+        cout << N << " x " << i << " = " << N * i << endl;
+    }
     cout << endl;
 
     // Exercise 3.4 — Factorial Calculator
@@ -194,7 +230,13 @@ int main() {
     // TODO: Use a loop to calculate the factorial
     //       Hint: start with result = 1, multiply by each number from 1 to N
     // TODO: Print the result
-
+    cout << "Enter non-negative N:" << endl;
+    cin >> N;
+    sum = 1;
+    for(i = N; i > 0; i--){
+        sum *= i;
+    }
+    cout << N << "!" << " = " << sum << endl;
     cout << endl;
 
     // Exercise 3.5 — Number Guessing (Sentinel Loop)
@@ -213,7 +255,19 @@ int main() {
     //       - Increment the counter
     //       - Print "Too high!" or "Too low!" if wrong
     // TODO: Print "Correct! You guessed it in X tries."
-
+    N = 0;
+    x = 0;
+    do {
+        cout << "Enter guess: " << endl;
+        cin >> N;
+        x++;
+        if(N > secret){
+            cout << "Too high!" << endl;
+        } else {
+            cout << "Too low!" << endl;
+        }
+    }while(N != secret);
+    cout << "Correct! You guessed it in " << x << " tries.";
     cout << endl;
 
     // Exercise 3.6 — Pattern Printer (Nested Loops)
@@ -234,6 +288,14 @@ int main() {
     // TODO: Outer loop for each row (1 to N)
     //       TODO: Inner loop to print the correct number of '*' characters
     //       TODO: Print a newline after each row
+    cout << "Enter number rows: " << endl;
+    cin >> N;
+    for(i = 0; i <= N; i++){
+        for(int j = 0; j < i; j++){
+            cout << "*";
+        }
+        cout << endl;
+    }
 
     cout << endl;
 
@@ -256,7 +318,14 @@ int main() {
     // TODO: Ask for a positive integer
     // TODO: Use a while loop to count digits
     // TODO: Print the digit count
-
+    cout << "Enter positive integer" << endl;
+    cin >> N;
+    x = 0;
+    while(N > 0){
+        N /= 10;
+        x++;
+    }
+    cout << x << " digits";
     cout << endl;
 
     // Challenge 4.2 — Simple Menu System
@@ -285,7 +354,35 @@ int main() {
     //       - Uses if/else or switch to handle each option
     //       - Loops back unless choice == 0
     // TODO: Print "Goodbye!" when exiting
+    int menu;
+    x = 0;
+    y = 0;
+    do{
+        cout << "1. Add two numbers" << endl;
+        cout << "2. Multiply two numbers" << endl;
+        cout << "3. Check if a number is even or odd" << endl;
+        cout << "0. Exit" << endl;
+        cin >> menu;
+        if(menu == 1){
+            cout << "Enter 2 integers" << endl;
+            cin >> x >> y;
+            cout << "Sum: " << x + y << endl;
+        } else if(menu == 2){
+            cout << "Enter 2 integers" << endl;
+            cin >> x >> y;
+            cout << "Sum: " << x * y << endl;;
+        } else if(menu == 3){
+            cout << "Enter 1 number" << endl;
+            cin >> x;
+            if(x % 2 == 0){
+                cout << "even" << endl;
+            } else{
+                cout << "odd" << endl;
+            }
+        }
 
+    } while (menu != 0);
+    cout << "Goodbye!";
     cout << endl;
 
     // ========================================================================
